@@ -190,8 +190,8 @@ const InviteModal = ({ inviteModal, setInviteModal, displayQRCode, youTubeId }) 
     const inviteToFaithConnect = async () => {
         await Share.share({
             title: "Invite to Parrish Connect",
-            message: 'Invite your family and friends to use Parrish Connect to seamlessly connect with your favorite Church services.' + '\n\n' + 'https://play.google.com/store/apps/details?id=com.churchplus.transfigurationvgc',
-            url: 'https://play.google.com/store/apps/details?id=com.churchplus.transfigurationvgc'
+            message: 'Invite your family and friends to use Parrish Connect to seamlessly connect with your favorite Church services.' + '\n\n' + 'https://play.google.com/store/apps/details?id=com.churchplus.parishconnect',
+            url: 'https://play.google.com/store/apps/details?id=com.churchplus.parishconnect'
         });
     }
 
@@ -226,9 +226,9 @@ const InviteModal = ({ inviteModal, setInviteModal, displayQRCode, youTubeId }) 
                     <View style={{ backgroundColor: COLORS.white, flexDirection: "row", gap: 10, alignItems: "center", paddingHorizontal: 13, paddingVertical: 15, marginTop: 15, borderRadius: 8 }}>
                         <PhoneIcon />
                         <TouchableOpacity onPress={inviteToFaithConnect}>
-                            <Text style={{ fontFamily: Fonts.bold, color: "rgba(0, 0, 0, 0.8)" }}>Invite to Transfiguration VGC</Text>
+                            <Text style={{ fontFamily: Fonts.bold, color: "rgba(0, 0, 0, 0.8)" }}>Invite to Parish Connect</Text>
                             <Text style={{ color: "rgba(0, 0, 0, 0.8)", fontSize: 11, fontFamily: Fonts.regular }}>Invite your Friends and Family to start enjoying</Text>
-                            <Text style={{ color: "rgba(0, 0, 0, 0.8)", fontSize: 11, fontFamily: Fonts.regular }}>the amazing features of Transfiguration VGC App</Text>
+                            <Text style={{ color: "rgba(0, 0, 0, 0.8)", fontSize: 11, fontFamily: Fonts.regular }}>the amazing features of Parish Connect App</Text>
                         </TouchableOpacity>
                     </View>
                     {
@@ -238,7 +238,7 @@ const InviteModal = ({ inviteModal, setInviteModal, displayQRCode, youTubeId }) 
                                 <TouchableOpacity onPress={liveServiceInvite}>
                                     <Text style={{ fontFamily: Fonts.bold, color: "rgba(0, 0, 0, 0.8)" }}>Live Service Invitation</Text>
                                     <Text style={{ color: "rgba(0, 0, 0, 0.8)", fontSize: 11, fontFamily: Fonts.regular }}>Send an Invite to your Church Live Stream</Text>
-                                    <Text style={{ color: "rgba(0, 0, 0, 0.8)", fontSize: 11, fontFamily: Fonts.regular }}>right here on Transfiguration VGC</Text>
+                                    <Text style={{ color: "rgba(0, 0, 0, 0.8)", fontSize: 11, fontFamily: Fonts.regular }}>right here on Parish Connect</Text>
                                 </TouchableOpacity>
                             </View>
                         ) : null
@@ -380,7 +380,7 @@ const ScanQRModal = ({ scanQRModal, setScanQRModal, churchProfile }) => {
 }
 
 const MinistryInfo = ({ ministryInformation, setMinistryInformation, fullProfile }) => {
-    const tabs = fullProfile?.customAbouts?.length > 0 ? ['PARISH LEADERSHIP', 'LOCATIONS'].concat(fullProfile?.customAbouts?.map(i => i.title)) : fullProfile?.customAbouts?.map(i => i.title)
+    const tabs = fullProfile?.customAbouts?.length > 0 ? ['Pastors', 'Locations'].concat(fullProfile?.customAbouts?.map(i => i.title)) : fullProfile?.customAbouts?.map(i => i.title)
     const [activeTab, setActiveTab] = useState("");
     const tabData = fullProfile?.customAbouts?.find(i => i.title === activeTab);
 
@@ -397,7 +397,7 @@ const MinistryInfo = ({ ministryInformation, setMinistryInformation, fullProfile
             </TouchableOpacity>
             <View style={{ height: "100%", marginTop: -10 }}>
                 <View>
-                    <Text style={{ fontFamily: Fonts.extrabold, fontSize: 22, color: "rgba(0, 0, 0, 0.8)", textAlign: "center" }}>Parish Info</Text>
+                    <Text style={{ fontFamily: Fonts.extrabold, fontSize: 22, color: "rgba(0, 0, 0, 0.8)", textAlign: "center" }}>Ministry Info</Text>
                 </View>
                 <View style={{ backgroundColor: "#FFFFFF", width: '100%', alignItems: "center", marginTop: 10, paddingVertical: 15, borderRadius: 8 }}>
                     <Image source={{ uri: fullProfile?.logoUrl || 'https://placeholder.com/68x68' }} style={{ width: 80, height: 80 }} resizeMode="contain" />
@@ -433,7 +433,7 @@ const MinistryInfo = ({ ministryInformation, setMinistryInformation, fullProfile
                         </View>)}
                 </View>
                 <View>
-                    {activeTab?.toLowerCase().includes('parish leadership') && (
+                    {activeTab?.toLowerCase().includes('pastors') && (
                         <ScrollView style={{ maxHeight: 300 }}>
                             <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
                                 {
@@ -441,11 +441,12 @@ const MinistryInfo = ({ ministryInformation, setMinistryInformation, fullProfile
                                         fullProfile?.pastors?.map((item, index) => (
                                             <View style={{ marginTop: 20 }} key={index}>
                                                 <Image source={{ uri: item.photoUrl || 'https://placeholder.com/68x68' }} style={{ width: (width - 70) / 2, height: 170, borderRadius: 10 }} />
-                                                <Text style={{ fontFamily: Fonts.bold, color: "#000000", marginTop: 10, width: (width - 40) / 2 }}>{item.name}</Text>
-                                                <Text style={{ fontFamily: Fonts.medium, color: "#000000", marginTop: 5, fontSize: 12, width: (width - 40) / 2 }}>{item.bio}</Text>
+                                                <Text style={{ fontWeight: "700", color: "#000000", marginTop: 10, width: (width - 40) / 2 }}>{item.name}</Text>
+                                                <Text style={{ fontFamily: Fonts.medium, color: "#000000", marginTop: 5, fontSize: 12, width: (width - 40) / 2 }}>{item.phone}</Text>
+                                                <Text style={{ fontFamily: Fonts.medium, color: "#000000", marginTop: 5, fontSize: 12, width: (width - 40) / 2 }}>{item.details}</Text>
                                             </View>
                                         )) : (
-                                            <Text style={{ fontFamily: Fonts.medium, fontSize: 13, color: COLORS.black, marginTop: 20 }}>No parish leader added yet.</Text>
+                                            <Text style={{ fontFamily: Fonts.medium, fontSize: 13, color: COLORS.black, marginTop: 20 }}>No pastor added yet</Text>
                                         )
                                 }
                             </View>
@@ -454,15 +455,21 @@ const MinistryInfo = ({ ministryInformation, setMinistryInformation, fullProfile
                 </View>
                 <View>
                     {activeTab.toLowerCase() === 'locations' && (
+                        console.log(`fullProfile?.churchBranches`, fullProfile?.churchBranches),
+
+
                         <ScrollView style={{ maxHeight: 300 }}>
                             {fullProfile?.churchBranches?.length == 0 ? (
                                 <Text style={{ fontFamily: Fonts.medium, fontSize: 13, color: COLORS.black, marginTop: 20 }}>No location added yet</Text>
                             ) : fullProfile?.churchBranches?.map((item, i) => (
                                 <View style={{ padding: 10, marginTop: 10, backgroundColor: "#FFFFFF" }} key={i}>
-                                    <Text style={{ fontFamily: Fonts.medium, fontSize: 13, color: COLORS.black, lineHeight: 19, flexWrap: 'wrap' }}>{item?.address}</Text>
+                                    <Text style={{ fontFamily: Fonts.medium, fontSize: 13, color: COLORS.black, lineHeight: 19, flexWrap: 'wrap' }}>{item?.branchName}</Text>
+                                    <Text style={{ fontFamily: Fonts.medium, fontSize: 13, color: COLORS.black, lineHeight: 19, marginTop: 10, flexWrap: 'wrap' }}>{item?.address}</Text>
+                                    <Text style={{ fontFamily: Fonts.medium, fontSize: 13, color: COLORS.black, lineHeight: 19, marginTop: 10, flexWrap: 'wrap' }}>{item?.branchDetails}</Text>
+                                    <Text style={{ fontFamily: Fonts.medium, fontSize: 13, color: COLORS.black, lineHeight: 19, marginTop: 10, flexWrap: 'wrap' }}>{item?.branchPhone}</Text>
                                 </View>
                             ))}
-                        </ScrollView>
+                        </ScrollView>   
                     )}
                 </View>
             </View>
@@ -566,6 +573,9 @@ export const HomeScreen = ({ navigation }) => {
             console.log(error);
         }
     }
+
+    console.log("churchProfile:", JSON.stringify(fullProfile, null, 2));
+
 
     const getVideoIds = async (channelId) => {
         setIsLoadingYoutube(true)

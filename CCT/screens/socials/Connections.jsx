@@ -154,7 +154,7 @@ const ConnectionList = ({ isNew }) => {
                                                     <View style={styles.centeritem}>
                                                         <View style={styles.NoMessageCard}>
                                                             <GroupUsersIcon size="40" color={"#555555CC"} />
-                                                            <Text style={styles.NoMessageText}>No connections from Catholic Church of the Transfiguration, VGC yet, Explore more connections from other ministries.</Text>
+                                                            <Text style={styles.NoMessageText}>No connections from {churchInfo.churchName} yet, Explore more connections from {churchInfo.churchName} ministries.</Text>
                                                         </View>
                                                     </View>
                                                 </View>

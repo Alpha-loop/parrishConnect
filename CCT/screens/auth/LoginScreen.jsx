@@ -148,11 +148,11 @@ const LoginScreen = ({ navigation }) => {
                                     </TouchableOpacity>
                                 </View>
                             </View>
-                            <View style={{ flexDirection: "row" }}>
+                            {/*<View style={{ flexDirection: "row" }}>
                                 <TouchableOpacity onPress={() => navigation.navigate("MainHeaderTabs")}>
                                     <Text style={{ fontFamily: Fonts.medium, color: COLORS.black, fontSize: 13 }}>Skip to feeds</Text>
                                 </TouchableOpacity>
-                            </View>
+                            </View>*/}
                         </View>
                         <View style={{ flexDirection: "row", justifyContent: "center", marginTop: 30, gap: 20 }}>
                             <View>

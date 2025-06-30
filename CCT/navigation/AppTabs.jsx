@@ -61,6 +61,7 @@ import SuccessProfileUpdate from '../screens/profile/SuccessProfileUpdate';
 import RegisterDetails from '../screens/finance/RegisterDetails';
 import TransasctionPin from '../screens/finance/TransasctionPin';
 import FinanceDashboard from '../screens/finance/FinanceDashboard';
+import SuccessCheckin from '../screens/event/SuccessCheckin';
 
 const Tab = createBottomTabNavigator();
 // const Drawer = createDrawerNavigator();
@@ -250,6 +251,7 @@ function AppRoute() {
                     <Stack.Screen name='RegisterDetails' component={RegisterDetails} options={{ headerShown: false }} /> 
                     <Stack.Screen name="TransactionPin" component={TransasctionPin} options={{ headerShown: false }} />
                     <Stack.Screen name="FinanceDashboard" component={FinanceDashboard} options={{ headerShown: false }} />
+                    <Stack.Screen name="SuccessCheckin" component={SuccessCheckin} options={{ headerShown: false }} />
                 </Stack.Navigator>
             </NavigationContainer>
 

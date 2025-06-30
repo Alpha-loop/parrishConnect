@@ -12,6 +12,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { clearChurch } from '../redux/userSlice';
 import { logout } from '../redux/userSlice';
 import usePushNotification from '../utils/usePushNotification'
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 
 const MoreScreen = ({ closeNav }) => {
@@ -23,6 +24,7 @@ const MoreScreen = ({ closeNav }) => {
     const navigation = useNavigation();
     useEffect(() => {
         // getChurchProfile();
+        getChurchMedia()
     }, [])
     const { unsubscribeFromTopic } = usePushNotification();
 
@@ -82,6 +84,21 @@ const MoreScreen = ({ closeNav }) => {
         setTimeout(() => {
             navigation.navigate("Login");
         }, 500);
+    }
+
+    const [churchSocials, setChurchSocials] = useState([])
+    const getChurchMedia = async () =>  {
+        try {
+            let { data } = await ChurchProfile(churchInfo?.tenantId);
+            console.log("Church Media Data: ", data.returnObject.churchSocialMedia);
+            if (!data) return;
+
+            setChurchSocials(data.returnObject.churchSocialMedia)
+
+        } catch (error) {
+            console.error("Error fetching church media:", error);
+        }
+
     }
 
 
@@ -200,6 +217,48 @@ const MoreScreen = ({ closeNav }) => {
                         <Text style={{ color: "#FE2034", fontSize: 14 }}>{userInfo ? 'Logout' : 'Login'}</Text>
                     </View>
                 </TouchableRipple>
+            </View>
+
+            <View style={{ marginBottom: 40,}}>
+                <Text style={{fontSize: 12, textAlign: "center", color: "black"}}>Follow Us on Our Socials</Text>
+                <View style={{display: "flex", flexDirection: "row", justifyContent: "center", marginRight: 12}}>
+                    <View>
+                        {churchSocials.find(item => item.name.includes('facebook')) && (
+                            <TouchableRipple rippleColor={"rgba(223, 239, 255, 0.74)"} onPress={() => Linking.openURL(churchSocials.find(item => item.name.includes('facebook')).url)}>
+                                <View style={{ flexDirection: "row", alignItems: "center", gap: 8, paddingVertical: 10, paddingLeft: 20 }}>
+                                    <Image source={require("../assets/img/fb.png")} style={{ width: 35, height: 35 }} />
+                                </View>
+                            </TouchableRipple>
+                        )}
+                    </View>
+                    <View>
+                        {churchSocials.find(item => item.name.includes('instagram')) && (
+                            <TouchableRipple rippleColor={"rgba(223, 239, 255, 0.74)"} onPress={() => Linking.openURL(churchSocials.find(item => item.name.includes('instagram')).url)}>
+                                <View style={{ flexDirection: "row", alignItems: "center", gap: 8, paddingVertical: 10, paddingLeft: 20 }}>
+                                    <Image source={require("../assets/img/ig.png")} style={{ width: 38, height: 35 }} />
+                                </View>
+                            </TouchableRipple>
+                        )}
+                    </View>
+                    <View>
+                        {churchSocials.find(item => item.name.includes('twitter')) && (
+                            <TouchableRipple rippleColor={"rgba(223, 239, 255, 0.74)"} onPress={() => Linking.openURL(churchSocials.find(item => item.name.includes('twitter')).url)}>
+                                <View style={{ flexDirection: "row", alignItems: "center", gap: 8, paddingVertical: 10, paddingLeft: 20 }}>
+                                    <Image source={require("../assets/img/x2-removebg-preview.png")} style={{ width: 35, height: 35 }} />
+                                </View>
+                            </TouchableRipple>
+                        )}
+                    </View>
+                    {/* <View>
+                        {churchSocials.find(item => item.name.includes('youtube')) && (
+                            <TouchableRipple rippleColor={"rgba(223, 239, 255, 0.74)"} onPress={() => Linking.openURL(churchSocials.find(item => item.name.includes('youtube')).url)}>
+                                <View style={{ flexDirection: "row", alignItems: "center", gap: 8, paddingVertical: 10, paddingLeft: 20 }}>
+                                    <Image source={require("../assets/img/youtube.png")} style={{ width: 35, height: 35 }} />
+                                </View>
+                            </TouchableRipple>
+                        )}
+                    </View> */}
+                </View>
             </View>
 
         </>

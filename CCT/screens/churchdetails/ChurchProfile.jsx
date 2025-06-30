@@ -125,7 +125,7 @@ const ChurchProfiles = ({ navigation, route }) => {
                     </View>
                 </View>)}
             <TouchableRipple rippleColor="#eee" style={{ backgroundColor: COLORS.primary, borderRadius: 15, padding: 13, position: 'absolute', bottom: 10, width: width - 20, alignSelf: 'center' }} onPress={() => handleSaveChurch(data)}>
-                <Text style={{ textAlign: 'center', color: COLORS.white }}>This is my church</Text>
+                <Text style={{ textAlign: 'center', color: COLORS.white }}>This is my parish</Text>
             </TouchableRipple>
         </SafeAreaView>
     )

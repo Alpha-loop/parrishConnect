@@ -74,3 +74,7 @@ export const GetAttendanceQRCode = async ({ userId, attendanceCode, tenantId }) 
 export const GetAllCustomFields = async (tenantId) => {
     return await axios.get(`https://churchplusv3coreapi.azurewebsites.net/GetAllCustomFields?entityType=${0}&tenantId=${tenantId}`)
 }
+
+export const CheckinAttendanceByLocation = async (payload) => {
+    return await axios2.post(`https://churchplusv3coreapi.azurewebsites.net/MarkAttendance`, payload)
+}

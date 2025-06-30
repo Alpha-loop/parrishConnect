@@ -1,4 +1,4 @@
-package com.churchplus.transfigurationvgc
+package com.churchplus.parishconnect
 
 import android.app.Application
 import com.facebook.react.PackageList

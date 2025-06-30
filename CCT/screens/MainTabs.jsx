@@ -89,11 +89,12 @@ function HeaderTabs({ navigation }) {
                         <View style={{ flex: 1 }}>
                             {
                                 displaySoc ?
-                                    !userInfo?.userId ? (
-                                        <NoUserLoggedIn navigation={navigation} />
-                                    ) : friends.length > 0 ?
-                                        <SocialTabs />
-                                        : <ConnectionList isNew={true} />
+                                    <SocialTabs />
+                                    // !userInfo?.userId ? (
+                                    //     <NoUserLoggedIn navigation={navigation} />
+                                    // ) : friends.length > 0 ?
+                                    //     <SocialTabs />
+                                    //     : <ConnectionList isNew={true} />
                                     : null
                             }
                         </View>

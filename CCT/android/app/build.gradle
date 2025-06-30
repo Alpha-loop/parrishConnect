@@ -76,12 +76,12 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
 
-    namespace "com.churchplus.transfigurationvgc"
+    namespace "com.churchplus.parishconnect"
     defaultConfig {
-        applicationId "com.churchplus.transfigurationvgc"
+        applicationId "com.churchplus.parishconnect"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 23
+        versionCode 29
         versionName "1.2.3"
     }
     signingConfigs {
